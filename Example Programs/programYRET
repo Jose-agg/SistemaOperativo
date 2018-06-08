@@ -1,0 +1,8 @@
+// Prueba ejercicio 14:
+// Programa que prueba si se lanza excepcion al ejecutar una orden YRET desde un programa de usuario
+30
+5
+NOP
+ADD 10 -13
+YRET
+TRAP 3

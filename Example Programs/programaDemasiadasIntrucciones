@@ -1,0 +1,17 @@
+// Prueba ejercicio 6:
+// Programa con tamaño indicado menor que el requerido
+5
+5
+NOP
+ADD 10 1
+ADD 10 1
+ADD 10 1
+ADD 10 1
+ADD 10 1
+WRITE 15
+ADD 10 1
+ADD 10 1
+ADD 10 1
+ADD 10 1
+ADD 10 1
+HALT

@@ -1,0 +1,7 @@
+// Prueba ejercicio 4c:
+// Programa que no tiene prioridad
+30
+NOP
+ADD 10 -13
+WRITE 15
+HALT

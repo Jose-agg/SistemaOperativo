@@ -1,0 +1,8 @@
+// Programa con prioridad mayor que 100
+30
+146
+NOP
+ADD 10 -13
+WRITE 15
+TRAP 3
+

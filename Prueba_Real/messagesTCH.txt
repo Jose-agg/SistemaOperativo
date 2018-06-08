@@ -1,0 +1,37 @@
+// Various sections messages
+1,@C%c %d %d@@
+3, (PC: @R%d@@, Accumulator: @R%d@@, PSW: @R%d@@ [@R%s@@])\n
+4,[%d] 
+5,[@R%d@@] 
+6,%s
+
+20,_ _ _
+
+// OperatingSystem messages
+21,@RERROR: Missing SIP program!@@\n
+22,@GProcess [%d] created from program [%s]@@\n
+23,@RProcess [%d] has generated an exception and is terminating@@\n
+24,@RProcess [%d] has the processor assigned@@\n
+25,@RProcess [%d] has requested to terminate@@\n
+26,SLEEPING Queue:\n\t\t
+27,[@G%d@@, %d, @R%d@@]
+28,Running Process Information:\n\t\t[PID: @G%d@@, Priority: %d, WakeUp: @R%d@@, Queue: %s]\n
+29,Arrival Time Queue:\n
+30,\t\t[@G%s@@, @R%d@@]\n
+40,Main memory state (@G%s@@):\n
+41,\t\t[@G%d@@] [@G%d@@ -> @G%d@@]
+42,[@G%d@@]\n
+43,[@G%s@@]\n
+44,@YProcess [@G%d@Y] searches for best-fit partition better than [@G%d@Y]@@\n
+45,@YProcess [@G%d@Y] moving from memory partition [@G%d@Y] to memory partition [@G%d@Y]@@\n
+50,@M[@G%s@M] starting Input/Output operation. Output value [@G%d@M]@@\n
+51,Input/Output Queue:\n\t\t
+52,[@G%d@@]
+53,@M ****** Device [@G%s@M] END Process I/O with data [@G%d@M] ******@@\n
+54,@M ****** Device [@G%s@M] initialized with I/O time of [@G%d@M] tics ******@@\n
+55,@M ****** Process [@G%d@M] ABORTS I/O Operation from process [@G%d@M] ******@@\n
+56,@M ****** Process [executingProcessID] tries to ABORT I/O Operation ******@@\n
+
+//  ComputerSystem messages
+99,@REND of the simulation@@\n
+

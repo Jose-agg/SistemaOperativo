@@ -1,0 +1,8 @@
+6
+6
+ADD 6 6
+INC 6
+NOP
+INC 6
+ADD 6 6
+TRAP 3

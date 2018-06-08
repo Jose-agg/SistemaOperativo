@@ -1,0 +1,103 @@
+void OperatingSystem_HandleSystemCall() {
+  
+	int systemCallID, selectedProcess;
+
+	// Register A contains the identifier of the issued system call
+	systemCallID=Processor_GetRegisterA();
+	
+	switch (systemCallID) {
+		case SYSCALL_PRINTEXECPID:
+			// Show message: "Process [executingProcessID] has the processor assigned\n"
+			OperatingSystem_ShowTime(SYSPROC);
+			ComputerSystem_DebugMessage(24,SYSPROC,executingProcessID);
+			break;
+
+		case SYSCALL_END:
+			// Show message: "Process [executingProcessID] has requested to terminate\n"
+			OperatingSystem_ShowTime(SYSPROC);
+			ComputerSystem_DebugMessage(25,SYSPROC,executingProcessID);
+			OperatingSystem_TerminateProcess();
+			OperatingSystem_PrintStatus();
+			break;
+			
+		case SYSCALL_YIELD:
+			OperatingSystem_HandleYield();
+			break;
+		
+		case SYSCALL_SLEEP:
+			OperatingSystem_SaveContext(executingProcessID);
+			OperatingSystem_MoveToTheBLOCKEDState(executingProcessID);
+			selectedProcess = OperatingSystem_ShortTermScheduler();
+			OperatingSystem_Dispatch(selectedProcess);
+			OperatingSystem_PrintStatus();
+			break;
+		case SYSCALL_MEMFIT:
+			OperatingSystem_SearchForBestPartition(executingProcessID);
+		default:
+			OperatingSystem_ShowTime(INTERRUPT);
+			ComputerSystem_DebugMessage(141,INTERRUPT,executingProcessID,systemCallID);
+			OperatingSystem_TerminateProcess();
+			OperatingSystem_PrintStatus();
+			break;
+	}
+}
+
+
+
+--------------------------------------------------------------------------------------------------
+
+void OperatingSystem_SearchForBestPartition(int PID){
+	int actualPartition, posBestPartition=-1, sizeBestPartition, processSize, i;
+	for(i=0; i<PARTITIONTABLEMAXSIZE; i++){
+		if(PID == partitionsTable[i].PID && partitionsTable[i].occupied==1){
+			actualPartition = i;
+			sizeBestPartition = partitionsTable[i].size;
+			processSize = processTable[PID].processSize;
+			break;
+		}
+	}
+	OperatingSystem_ShowTime(SYSMEM);
+	ComputerSystem_DebugMessage(44,SYSMEM, PID, actualPartition);
+	for(i=0; i<PARTITIONTABLEMAXSIZE;i++){
+		if(partitionsTable[i].occupied == 0){
+			if(partitionsTable[i].size >= processSize){
+				if(partitionsTable[i].size < sizeBestPartition){
+					posBestPartition=i;
+					sizeBestPartition=partitionsTable[i].size;
+				}
+			}
+		}
+	}
+	if(posBestPartition!= -1){
+		int from, to, size;
+		OperatingSystem_ShowPartitionTable("before moving process");
+		OperatingSystem_ShowTime(SYSMEM);
+		ComputerSystem_DebugMessage(45,SYSMEM, PID, actualPartition, posBestPartition);
+		
+		OperatingSystem_SaveContext(PID);
+		processTable[PID].initialPhysicalAddress = partitionsTable[posBestPartition].initAddress;
+		
+		from = partitionsTable[actualPartition].initAddress;
+		to = partitionsTable[posBestPartition].initAddress;
+		size = processTable[PID].processSize;
+		OperatingSystem_MoveMemoryFromTo(from, to, size);
+		
+		OperatingSystem_RestoreContext(PID);
+		OperatingSystem_ShowPartitionTable("after moving process");
+	}
+	
+	
+}
+
+
+--------------------------------------------------------------------------------------------------
+
+enum SystemCallIdentifiers { SYSCALL_END=3, SYSCALL_PRINTEXECPID=5, SYSCALL_YIELD=4, SYSCALL_SLEEP=7, SYSCALL_MEMFIT=2};
+
+--------------------------------------------------------------------------------------------------
+
+Mi V4 tenia bastantes fallos, asi que intente corregirlos y el examen esta hecho sobre esta correcion. Aun asi puede que haya fallos de las entregas que afecten al examen
+
+--------------------------------------------------------------------------------------------------
+
+./Simulator A programaPruebaExamen1 0 programaPruebaExamen2 4 programaPruebaExamen3 5 programaPruebaExamen4 6

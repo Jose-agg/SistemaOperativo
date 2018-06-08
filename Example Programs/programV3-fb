@@ -1,0 +1,7 @@
+//programV3-fb
+30
+5
+NOP
+ADD 3 0
+TRAP 7
+HALT

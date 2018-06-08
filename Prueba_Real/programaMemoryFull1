@@ -1,0 +1,7 @@
+10
+5
+ADD 5 5
+INC 5
+INC 5
+ADD 5 5
+TRAP 3

@@ -1,0 +1,7 @@
+24
+1
+ADD 0 1
+INC 3
+NOP
+BOOM 0 0
+TRAP 3

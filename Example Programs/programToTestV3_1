@@ -1,0 +1,7 @@
+// Programa para probar la V3 con mayor prioridad
+10
+1
+NOP
+ADD 10 -13
+WRITE 15
+TRAP 3

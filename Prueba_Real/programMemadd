@@ -1,0 +1,11 @@
+// Prueba ejercicio 0:
+// Programa que prueba que funciona la instruccion MEMADD
+26
+9
+MEMADD 9,100
+WRITE 100
+MEMADD 1,100
+WRITE 100
+MEMADD -20,100
+ZJUMP -3
+TRAP 3 

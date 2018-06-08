@@ -1,0 +1,10 @@
+// Prueba ejercicio 11.1:
+// Primera parte de un programa para ceder el procesador a otro
+54
+104
+SUB 0 4
+INC 1
+TRAP 4
+ZJUMP 2
+JUMP -3
+TRAP 3

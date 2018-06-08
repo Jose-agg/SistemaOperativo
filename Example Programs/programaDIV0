@@ -1,0 +1,6 @@
+10
+9
+NOP
+ADD 10 5
+DIV 5 0
+TRAP

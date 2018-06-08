@@ -1,0 +1,9 @@
+// Prueba ejercicio 0:
+// Comprobar los traps
+10
+50
+INC 1
+TRAP 4
+INC 2
+TRAP 3
+

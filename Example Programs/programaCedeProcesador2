@@ -1,0 +1,10 @@
+// Prueba ejercicio 11.2:
+// Segunda parte de un programa para ceder el procesador a otro
+54
+104
+ADD 4 0
+INC -1
+TRAP 4
+ZJUMP 2
+JUMP -3
+TRAP 3

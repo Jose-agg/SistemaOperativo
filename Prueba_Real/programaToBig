@@ -1,0 +1,8 @@
+// Prueba ejercicio 5:
+// Programa con tamaño mayor que el maximo posible por proceso
+650
+2
+ADD 100 6
+WRITE 7
+NOP
+TRAP 3 
